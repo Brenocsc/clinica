@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="main.css">
-        <title>HxH - Novo Endereço</title>
+        <title>HxH - Login</title>
     </head>
 
     <body>
@@ -22,37 +22,21 @@
             <a href="../consulta/">Agendamento Consulta</a>
         </nav>
         <br />
-        <main>
+        <main id="principal">
             <form autocomplete="on">
-                <ul>
-                    <h2>Novo Endereço:</h2>
-                    <li>
-                        <label for="cep">CEP: </label>
-                        <input type="text" id="cep" name="cep" required>
-                    </li>
-                    <li>
-                        <label>Tipo de logadouro: </label>
-                        <select>
-                            <option value="praca">Praça</option>
-                            <option value="rua">Rua</option>
-                            <option value="avenida">Avenida</option>
-                        </select>
-                    </li>
-                    <li>
-                        <label for="logadouro">Logadouro: </label>
-                        <input type="text" id="logadouro" name="logadouro" required>
-                    </li>
-                    <li>
-                        <label for="cidade">Cidade: </label>
-                        <input type="text" id="cidade" name="cidade" required>
-                    </li>
-                    <li>
-                        <label for="estado">Estado: </label>
-                        <input type="text" id="estado" name="estado" required>
-                    </li>
-                    <br />
-                    <input type="submit" value="Submit">
-                </ul>
+                <section>
+                    <label for="usuario">Usuário: </label>
+                    <br \>
+                    <input type="text" id="usuario" class="credenciais" required autofocus>
+                </section>
+                <br \>
+                <section>
+                    <label for="senha">Senha: </label>
+                    <br \>
+                    <input type="text" id="senha" class="credenciais" required>
+                </section>
+                <br \>
+                <input type="submit" value="Submit">
             </form>
         </main>
         <br />
