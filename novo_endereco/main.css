@@ -1,0 +1,31 @@
+body {
+    background-color: #d3d3d3;
+    margin: 0;
+    padding: 0;
+}
+
+#cabecalho {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    text-align: center;
+    font-size: 35pt;
+    color: white;
+    background-color: black;
+}
+
+#navegacao {
+    background-color: #696969;
+    text-align: center;
+    padding-top: 20px;
+    font-size: 13pt;
+    height: 40px;
+    margin: 0;
+}
+
+#rodape {
+    background-color: #808080;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-left: 0;
+    border: 1px dotted black;
+}

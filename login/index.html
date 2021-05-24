@@ -4,38 +4,38 @@
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="main.css">
-        <title>HxH - Health & Health</title>
+        <title>HxH - Login</title>
     </head>
 
     <body>
         <header id="cabecalho">
-            <a href="./"><img src="./images/logo.jpg" width="100" height="100"></a>
+            <a href="../"><img src="../images/logo.jpg" width="100" height="100"></a>
             <label>Health & Health</label>
         </header>
         
         <nav id="navegacao">
-            <a href="./galeria/">Galeria</a> |
-            <a href="./novo_endereco/">Novo Endereço</a> |
-            <a href="./login/">Login</a> |
-            <a href="./consulta/">Agendamento Consulta</a>
+            <a href="../galeria/">Galeria</a> |
+            <a href="../novo_endereco/">Novo Endereço</a> |
+            <a href="../login/">Login</a> |
+            <a href="../consulta/">Agendamento Consulta</a>
         </nav>
         <br />
-        <main>
-            <div id="info">
+        <main id="principal">
+            <form autocomplete="on">
                 <section>
-                    <h2>Quem somos:</h2>
-                    <p>Somos uma clinica que se utiliza de novas tecnologias para realizar recuperação de atletas de elites.</p>
+                    <label for="usuario">Usuário: </label>
+                    <br \>
+                    <input type="text" id="usuario" class="credenciais" required autofocus>
                 </section>
+                <br \>
                 <section>
-                    <h2>Nossos valores:</h2>
-                    <ul>
-                        <li>Carpem Diem</li>
-                        <li>Micro recuperação</li>
-                        <li>Confiança</li>
-                        <li>Auto desenvolvimento</li>
-                    </ul>
+                    <label for="senha">Senha: </label>
+                    <br \>
+                    <input type="text" id="senha" class="credenciais" required>
                 </section>
-            </div>
+                <br \>
+                <input type="submit" value="Submit">
+            </form>
         </main>
         <br />
         <footer id="rodape">
