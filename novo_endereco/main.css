@@ -3,10 +3,11 @@ body {
     margin: 0;
     padding: 0;
     position: relative;
+    min-height: 100vh;
 }
 
 main {
-    margin-bottom: 8em;
+    padding-bottom: 8em;
 }
 
 #cabecalho {
@@ -32,6 +33,19 @@ main {
     bottom: 0;
     width: 100%;
     background-color: #808080;
+}
+
+#rodape div {
+    padding: 10px;
+}
+
+#rodape h4 {
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+#rodape p {
+    margin-bottom: 0;
 }
 
 #btn_login {

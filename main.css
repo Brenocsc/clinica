@@ -7,7 +7,7 @@ body {
 }
 
 main {
-    margin-bottom: 8em;
+    padding-bottom: 8em;
 }
 
 #cabecalho {
@@ -34,26 +34,6 @@ main {
     border: 1px dotted black;
 }
 
-#rodape {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    background-color: #808080;
-}
-
-#rodape div {
-    padding: 10px;
-}
-
-#rodape h4 {
-    margin-top: 0;
-    margin-bottom: 15px;
-}
-
-#rodape p {
-    margin-bottom: 0;
-}
-
 #btn_login {
     background-color: red;
     width: 100px;
@@ -63,6 +43,13 @@ main {
     position: relative;
     bottom: 20px;
     left: 340px;
+}
+
+#rodape {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: #808080;
 }
 
 #rodape div {
