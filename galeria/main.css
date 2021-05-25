@@ -64,3 +64,14 @@ main {
     margin: auto;
     width: 500px;
 }
+
+#btn_login {
+    background-color: #dcdcdc;
+    width: 100px;
+    height: 100px;
+    border: 1.5px double black;
+    border-radius: 10px;
+    position: relative;
+    bottom: 20px;
+    left: 340px;
+}
