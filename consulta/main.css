@@ -8,6 +8,7 @@ body {
 
 main {
     padding-bottom: 8em;
+    padding-left: 20px;
 }
 
 #cabecalho {
@@ -23,17 +24,18 @@ main {
     background-color: #696969;
     text-align: center;
     padding-top: 20px;
-    position: relative;
     font-size: 13pt;
     height: 40px;
     margin: 0;
 }
 
-#principal {
-    background-color: #A9A9A9;
-    padding: 15px;
-    margin: 10px;
-    border: 1px dotted black;
+#principal div {
+    list-style-type: none;
+    padding: 5px
+}
+
+#submit {
+    margin-top: 10px;
 }
 
 #rodape {
@@ -57,7 +59,7 @@ main {
 }
 
 #btn_login {
-    background-color: red;
+    background-color: #dcdcdc;
     width: 100px;
     height: 100px;
     border: 1.5px double black;
