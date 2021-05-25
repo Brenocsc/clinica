@@ -2,12 +2,17 @@ body {
     background-color: #d3d3d3;
     margin: 0;
     padding: 0;
+    position: relative;
+    min-height: 100vh;
+}
+
+main {
+    margin-bottom: 8em;
 }
 
 #cabecalho {
     padding-top: 15px;
     padding-bottom: 15px;
-    
     text-align: center;
     font-size: 35pt;
     color: white;
@@ -23,6 +28,26 @@ body {
     margin: 0;
 }
 
+#rodape {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: #808080;
+}
+
+#rodape div {
+    padding: 10px;
+}
+
+#rodape h4 {
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+#rodape p {
+    margin-bottom: 0;
+}
+
 .photo {
     border-radius: 10px; 
 }
@@ -36,18 +61,6 @@ body {
     background-color: #c0c0c0;
     color: #808080;
     border: 1px double #353839;
-    
     margin: auto;
     width: 500px;
-    
-}
-
-#rodape {
-    background-color: #808080;
-    padding-left: 20px;
-    padding-right: 20px;
-    margin-left: 10px;
-    margin-right: 10px;
-    margin: 0;
-    border: 1px dotted black;
 }

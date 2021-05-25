@@ -11,15 +11,21 @@
         <header id="cabecalho">
             <a href="../"><img src="../images/logo.jpg" width="100" height="100"></a>
             <label>Health & Health</label>
+            <button id="btn_login" type="button">
+                LOGIN
+            </button>
+            <script>
+                document.getElementById('btn_login').addEventListener("click", goLogin);
+                function goLogin(e) {
+                    window.location.href="../login/"
+                }
+            </script>
         </header>
-        
         <nav id="navegacao">
             <a href="../galeria/">Galeria</a> |
             <a href="../novo_endereco/">Novo Endereço</a> |
-            <a href="../login/">Login</a> |
             <a href="../consulta/">Agendamento Consulta</a>
         </nav>
-        <br />
         <main id="principal">
             <form autocomplete="on">
                 <section>
@@ -37,18 +43,17 @@
                 <input type="submit" value="Submit">
             </form>
         </main>
-        <br />
         <footer id="rodape">
-            <section>
+            <div>
                 <h4>Informações de Contato</h4>
                 Email: <a href="mailto:abs_ferr@mail.com">abs_ferr@mail.com</a>  |  
                 Telefone: <a href="tel:039-3225-9243">039-3225-9243</a>
-            </section>
-            <p><i><strong>Como dizia Edgard Abbehusen, </strong></i>
-                <q cite="https://www.42frases.com.br/frases-de-fisioterapia/">
-                    Fisioterapia é gratidão e missão. Felicidade por mais uma etapa vencida ao final de um dia. É a certeza de que vale a pena ser guardião do movimento do mundo.
-                </q>
-            </p>
+                <p><i><strong>Como dizia Edgard Abbehusen, </strong></i>
+                    <q cite="https://www.42frases.com.br/frases-de-fisioterapia/">
+                        Fisioterapia é gratidão e missão. Felicidade por mais uma etapa vencida ao final de um dia. É a certeza de que vale a pena ser guardião do movimento do mundo.
+                    </q>
+                </p>
+            </div>
         </footer>
     </body>
 

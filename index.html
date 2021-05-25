@@ -11,12 +11,19 @@
         <header id="cabecalho">
             <a href="./"><img src="./images/logo.jpg" width="100" height="100"></a>
             <label>Health & Health</label>
+            <button id="btn_login" type="button">
+                LOGIN
+            </button>
+            <script>
+                document.getElementById('btn_login').addEventListener("click", goLogin);
+                function goLogin(e) {
+                    window.location.href="./login/"
+                }
+            </script>
         </header>
-        
         <nav id="navegacao">
             <a href="./galeria/">Galeria</a> |
             <a href="./novo_endereco/">Novo Endereço</a> |
-            <a href="./login/">Login</a> |
             <a href="./consulta/">Agendamento Consulta</a>
         </nav>
         <main>
