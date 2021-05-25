@@ -23,24 +23,16 @@
         </header>
         <nav id="navegacao">
             <a href="../galeria/">Galeria</a> |
-            <a href="../novo_endereco/">Novo Endereço</a> |
+            <a href="../novo-endereco/">Novo Endereço</a> |
             <a href="../consulta/">Agendamento Consulta</a>
         </nav>
         <main>
-            <form autocomplete="on">
+            <form autocomplete="on" name="formCadastro" action="cadastrar-endereco.php" method="post">
                 <ul>
-                    <h2>Novo Endereço:</h2>
+                    <h2>Cadastrar novo endereço:</h2>
                     <li>
                         <label for="cep">CEP: </label>
                         <input type="text" id="cep" name="cep" required>
-                    </li>
-                    <li>
-                        <label>Tipo de logadouro: </label>
-                        <select>
-                            <option value="praca">Praça</option>
-                            <option value="rua">Rua</option>
-                            <option value="avenida">Avenida</option>
-                        </select>
                     </li>
                     <li>
                         <label for="logadouro">Logadouro: </label>
@@ -54,7 +46,7 @@
                         <label for="estado">Estado: </label>
                         <input type="text" id="estado" name="estado" required>
                     </li>
-                    <input type="submit" value="Submit">
+                    <input id="submit" type="submit" value="Submit">
                 </ul>
             </form>
         </main>

@@ -28,6 +28,15 @@ main {
     margin: 0;
 }
 
+li {
+    list-style-type: none;
+    padding: 5px
+}
+
+#submit {
+    margin-top: 10px;
+}
+
 #rodape {
     position: absolute;
     bottom: 0;
