@@ -36,7 +36,13 @@
                     <label for="senha">Senha: </label>
                     <input type="text" id="senha" class="credenciais" required>
                 </section>
-                <input type="submit" value="Submit">
+                <input id="btn_logi" type="submit" value="Submit">
+                <script>
+                    document.getElementById('btn_logi').addEventListener("click", goLogin);
+                    function goLogin(e) {
+                        window.location.href="../principal-restrita/"
+                    }
+                </script>
             </form>
         </main>
         <footer id="rodape">
