@@ -4,12 +4,12 @@
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="main.css">
-        <title>HxH - Health & Health</title>
+        <title>HxH - Novo Funcionario</title>
     </head>
 
     <body>
         <header id="cabecalho">
-            <a href="./"><img src="../images/logo.jpg" width="100" height="100"></a>
+            <a href="../"><img src="../images/logo.jpg" width="100" height="100"></a>
             <label>Health & Health</label>
         </header>
         <nav id="navegacao">
@@ -22,28 +22,28 @@
             <a href="../lista-agendamento-medico/">Lista Agendamento Medicos</a>
         </nav>
         <main>
-            <form>
-                <div>
-                    <button id="btn_medico" type="button">
-                        SOU MEDICO
-                    </button>
-                    <button id="btn_nao_medico" type="button">
-                        NÃO SOU MÉDICO
-                    </button>
-                </div>
-                <script>
-                    document.getElementById('btn_medico').addEventListener("click", show_med);
-                    document.getElementById('btn_nao_medico').addEventListener("click", no_med);
-                    function show_med(e) {
-                        var check = document.getElementById('medico_div');
-                        check.style.display = "block";
-                    }
-                    function no_med(e) {
-                        var check = document.getElementById('medico_div');
-                        check.style.display = "none";
-                    }
-                </script>
+            <div>
+                <button id="btn_medico" type="button">
+                    SOU MEDICO
+                </button>
+                <button id="btn_nao_medico" type="button">
+                    NÃO SOU MÉDICO
+                </button>
+            </div>
+            <script>
+                document.getElementById('btn_medico').addEventListener("click", show_med);
+                document.getElementById('btn_nao_medico').addEventListener("click", no_med);
+                function show_med(e) {
+                    var check = document.getElementById('medico_div');
+                    check.style.display = "block";
+                }
+                function no_med(e) {
+                    var check = document.getElementById('medico_div');
+                    check.style.display = "none";
+                }
+            </script>
 
+            <form>
                 <h2>Dados Básicos:</h2>
                 <div>
                     <label for="nome">Nome completo: </label>

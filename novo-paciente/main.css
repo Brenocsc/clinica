@@ -8,6 +8,8 @@ body {
 
 main {
     padding-bottom: 8em;
+    padding-left: 25px;
+    padding-top: 15px;
 }
 
 #cabecalho {
@@ -28,10 +30,8 @@ main {
     margin: 0;
 }
 
-#info {
-    padding: 12px;
-    margin: 12px;
-    border: 1px dotted black;
+#div_submit {
+    margin-top: 20px;
 }
 
 #rodape {
