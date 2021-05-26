@@ -5,8 +5,6 @@
   $cep = $logradouro = $cidade = $estado = "";
 
   try {
-    $pdo->beginTransaction();
-
     if (isset($_POST["cep"])) $cep = $_POST["cep"];
     if (isset($_POST["logradouro"])) $logradouro = $_POST["logradouro"];
     if (isset($_POST["cidade"])) $cidade = $_POST["cidade"];
@@ -15,12 +13,10 @@
     $stmt = $pdo->prepare('INSERT INTO base_enderecos_ajax_clinica (cep, logradouro, cidade, estado) VALUES (?, ?, ?, ?)');
     $stmt->execute([$cep, $logradouro, $cidade, $estado]);
 
-    // header("location: index.html");
-    // exit();
+    header("location: index.html");
+    exit();
   }
   catch (Exception $e) {
-    // desfaz as operacoes em caso de erro (exceção lançada)
-    $pdo->rollBack();
-    exit('Falha na transação: ' . $e->getMessage());
+    exit('Falha ao cadastrar os dados: ' . $e->getMessage());
   }
 ?>
