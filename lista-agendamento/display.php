@@ -4,10 +4,12 @@ require "../conexaoMysql.php";
 $pdo = mysqlConnect();
 
 try {
-
   $sql = <<<SQL
-  SELECT p.nome as nome, p.sexo as sexo, p.email as email, p.telefone as telefone, p.cep as cep, p.logradouro as logradouro, p.cidade as cidade, p.estado as estado, pa.peso as peso, pa.altura as altura, pa.tipo_sang as tipo_sang
-  FROM pessoa p inner join paciente pa on p.codigo = pa.codigo
+  SELECT a.data as data, a.horario as horario, a.nome as nome, a.sexo as sexo, a.email as email, mp.especialidade as especialidade, mp.crm as crm, mp.nomeMedico as medico
+  FROM agenda a right join (
+      SELECT p.nome as nomeMedico, m.codigo as codigo, m.especialidade as especialidade, m.crm as crm
+      FROM medico m right join pessoa p on m.codigo = p.codigo) mp
+    on a.codigoMedico = mp.codigo
   SQL;
 
   $stmt = $pdo->query($sql);
@@ -21,7 +23,7 @@ try {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>HxH - Lista Pacientes</title>
+    <title>HxH - Lista Agendamentos</title>
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-CuOF+2SnTUfTwSZjCXf01h7uYhfOBuxIhGKPbfEJ3+FqH/s6cIFN9bGr1HmAg4fQ" crossorigin="anonymous">
@@ -44,21 +46,18 @@ try {
     </nav>
     <main>
         <div class="container">
-            <h3>Pacientes Cadastrados</h3>
+            <h3>Funcionários Cadastrados</h3>
             <table class="table table-striped table-hover">
             <tr>
                 <th></th>
                 <th>Nome</th>
                 <th>Sexo</th>
                 <th>Email</th>
-                <th>Telefone</th>
-                <th>CEP</th>
-                <th>Logradouro</th>
-                <th>Cidade</th>
-                <th>Estado</th>
-                <th>Peso</th>
-                <th>Altura</th>
-                <th>Tipo Sanguíneo</th>
+                <th>Horario</th>
+                <th>Data</th>
+                <th>Medico</th>
+                <th>Especialidade</th>
+                <th>CRM</th>
             </tr>
 
             <?php
@@ -69,28 +68,24 @@ try {
                 $nome = htmlspecialchars($row['nome']);
                 $sexo = htmlspecialchars($row['sexo']);
                 $email = htmlspecialchars($row['email']);
-                $telefone = htmlspecialchars($row['telefone']);
-                $cep = htmlspecialchars($row['cep']);
-                $log = htmlspecialchars($row['logradouro']);
-                $cidade = htmlspecialchars($row['cidade']);
-                $estado = htmlspecialchars($row['estado']);
-                $peso = htmlspecialchars($row['peso']);
-                $altura = htmlspecialchars($row['altura']);
-                $tipo_sang = htmlspecialchars($row['tipo_sang']);
+                $horario = htmlspecialchars($row['horario']);
+                $medico = htmlspecialchars($row['medico']);
+                $especialidade = htmlspecialchars($row['especialidade']);
+                $crm = htmlspecialchars($row['crm']);
+
+                $data = new DateTime($row['data']);
+                $dataFormatoDiaMesAno = $data->format('d-m-Y');
 
                 echo <<<HTML
                 <tr>
                     <td>$nome</td> 
                     <td>$sexo</td>
                     <td>$email</td>
-                    <td>$telefone</td>
-                    <td>$cep</td>
-                    <td>$log</td>
-                    <td>$cidade</td>
-                    <td>$estado</td>
-                    <td>$peso</td>
-                    <td>$altura</td>
-                    <td>$tipo_sang</td>
+                    <td>$horario</td>
+                    <td>$dataFormatoDiaMesAno</td>
+                    <td>$medico</td>
+                    <td>$especialidade</td>
+                    <td>$crm</td>
                 </tr>      
                 HTML;
             }

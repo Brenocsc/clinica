@@ -28,12 +28,6 @@ main {
     margin: 0;
 }
 
-#info {
-    padding: 12px;
-    margin: 12px;
-    border: 1px dotted black;
-}
-
 #rodape {
     position: absolute;
     bottom: 0;

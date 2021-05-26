@@ -5,11 +5,9 @@ $pdo = mysqlConnect();
 
 try {
   $sql = <<<SQL
-  SELECT nome, sexo, email, telefone, cep, logradouro, cidade, estado, inicio_contrato, salario
-  FROM cliente
+  SELECT p.nome as nome, p.sexo as sexo, p.email as email, p.telefone as telefone, p.cep as cep, p.logradouro as logradouro, p.cidade as cidade, p.estado as estado, f.data_contrato as data_contrato, f.salario as salario
+  FROM pessoa p inner join funcionario f on p.codigo = f.codigo
   SQL;
-
-  // Add query correta
 
   $stmt = $pdo->query($sql);
 } catch (Exception $e) {
@@ -76,8 +74,8 @@ try {
                 $estado = htmlspecialchars($row['estado']);
                 $salario = htmlspecialchars($row['salario']);
 
-                $inicio_contrato = new DateTime($row['inicio_contrato']);
-                $dataFormatoDiaMesAno = $inicio_contrato->format('d-m-Y');
+                $data = new DateTime($row['data_contrato']);
+                $dataFormatoDiaMesAno = $data->format('d-m-Y');
 
                 echo <<<HTML
                 <tr>

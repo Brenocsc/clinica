@@ -4,11 +4,13 @@ require "../conexaoMysql.php";
 $pdo = mysqlConnect();
 
 try {
-
   $sql = <<<SQL
-  SELECT p.nome as nome, p.sexo as sexo, p.email as email, p.telefone as telefone, p.cep as cep, p.logradouro as logradouro, p.cidade as cidade, p.estado as estado, pa.peso as peso, pa.altura as altura, pa.tipo_sang as tipo_sang
-  FROM pessoa p inner join paciente pa on p.codigo = pa.codigo
+  SELECT a.data as data, a.horario as horario, a.nome as nome, a.sexo as sexo, a.email as email
+  FROM agenda a right join medico m on a.codigoMedico = m.codigo
+  WHERE m.crm = CRM
   SQL;
+
+  //deve receber o crm do médico q estiver logado
 
   $stmt = $pdo->query($sql);
 } catch (Exception $e) {
@@ -21,7 +23,7 @@ try {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>HxH - Lista Pacientes</title>
+    <title>HxH - Lista Agendamentos Médicos</title>
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-CuOF+2SnTUfTwSZjCXf01h7uYhfOBuxIhGKPbfEJ3+FqH/s6cIFN9bGr1HmAg4fQ" crossorigin="anonymous">
@@ -44,53 +46,37 @@ try {
     </nav>
     <main>
         <div class="container">
-            <h3>Pacientes Cadastrados</h3>
+            <h3>Funcionários Cadastrados</h3>
             <table class="table table-striped table-hover">
             <tr>
                 <th></th>
+                <th>Data</th>
+                <th>Horario</th>
                 <th>Nome</th>
                 <th>Sexo</th>
                 <th>Email</th>
-                <th>Telefone</th>
-                <th>CEP</th>
-                <th>Logradouro</th>
-                <th>Cidade</th>
-                <th>Estado</th>
-                <th>Peso</th>
-                <th>Altura</th>
-                <th>Tipo Sanguíneo</th>
             </tr>
 
             <?php
             while ($row = $stmt->fetch()) {
-
+                data as data, a.horario as horario, a.nome as nome, a.sexo as sexo, a.email as email
                 // Limpa os dados produzidos pelo usuário
                 // com possibilidade de ataque XSS
                 $nome = htmlspecialchars($row['nome']);
                 $sexo = htmlspecialchars($row['sexo']);
                 $email = htmlspecialchars($row['email']);
-                $telefone = htmlspecialchars($row['telefone']);
-                $cep = htmlspecialchars($row['cep']);
-                $log = htmlspecialchars($row['logradouro']);
-                $cidade = htmlspecialchars($row['cidade']);
-                $estado = htmlspecialchars($row['estado']);
-                $peso = htmlspecialchars($row['peso']);
-                $altura = htmlspecialchars($row['altura']);
-                $tipo_sang = htmlspecialchars($row['tipo_sang']);
+                $horario = htmlspecialchars($row['horario']);
+                
+                $data = new DateTime($row['data']);
+                $dataFormatoDiaMesAno = $data->format('d-m-Y');
 
                 echo <<<HTML
                 <tr>
+                    <td>$dataFormatoDiaMesAno</td>
+                    <td>$horario</td>
                     <td>$nome</td> 
                     <td>$sexo</td>
                     <td>$email</td>
-                    <td>$telefone</td>
-                    <td>$cep</td>
-                    <td>$log</td>
-                    <td>$cidade</td>
-                    <td>$estado</td>
-                    <td>$peso</td>
-                    <td>$altura</td>
-                    <td>$tipo_sang</td>
                 </tr>      
                 HTML;
             }
