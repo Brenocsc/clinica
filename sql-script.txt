@@ -1,0 +1,26 @@
+CREATE TABLE base_enderecos_ajax_clinica (
+   cep varchar(9),
+   logradouro varchar(50),
+   cidade varchar(30),
+   estado varchar(30)
+) ENGINE=InnoDB;
+
+CREATE TABLE pessoa_clinica (
+   codigo int PRIMARY KEY auto_increment,
+   nome varchar(50),
+   sexo varchar(15),
+   email varchar(50) UNIQUE,
+   telefone varchar(12),
+   cep varchar(9),
+   logradouro varchar(50),
+   cidade varchar(30),
+   estado varchar(30)
+) ENGINE=InnoDB;
+
+CREATE TABLE funcionario_clinica (
+    codigo int PRIMARY KEY,
+    dataContrato date,
+    salario decimal(15,2),
+    senhaHash varchar(80),
+    FOREIGN KEY (codigo) REFERENCES pessoa_clinica(codigo) ON DELETE CASCADE
+) ENGINE=InnoDB

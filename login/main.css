@@ -54,6 +54,10 @@ main {
     /*add para deixar a o bloco no centro*/
 }
 
+#loginButton {
+    margin-top: 10px;
+}
+
 #rodape {
     position: absolute;
     bottom: 0;

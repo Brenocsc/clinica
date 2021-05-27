@@ -4,6 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="main.css">
+        <script src="script.js"></script>
         <title>HxH - Login</title>
     </head>
 
@@ -27,16 +28,16 @@
             <a href="../consulta/">Agendamento Consulta</a>
         </nav>
         <main id="principal">
-            <form autocomplete="on">
+            <form id="loginForm" autocomplete="on" onsubmit="handleLoginForm()">
                 <section>
-                    <label for="usuario">Usuário: </label>
-                    <input type="text" id="usuario" class="credenciais" required autofocus>
+                    <label for="email">Usuário: </label>
+                    <input type="text" id="email" class="credenciais" name="email" required autofocus>
                 </section>
                 <section>
                     <label for="senha">Senha: </label>
-                    <input type="text" id="senha" class="credenciais" required>
+                    <input type="password" id="senha" class="credenciais" name="senha" required>
                 </section>
-                <input type="submit" value="Submit">
+                <button id="loginButton">Submit</button>
             </form>
         </main>
         <footer id="rodape">
