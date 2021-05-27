@@ -1,0 +1,55 @@
+body {
+    background-color: #d3d3d3;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    min-height: 100vh;
+}
+
+main {
+    padding-bottom: 8em;
+    padding-left: 25px;
+    padding-top: 15px;
+}
+
+#cabecalho {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    text-align: center;
+    font-size: 35pt;
+    color: white;
+    background-color: black;
+}
+
+#navegacao {
+    background-color: #696969;
+    text-align: center;
+    padding-top: 20px;
+    font-size: 13pt;
+    height: 40px;
+    margin: 0;
+}
+
+#div_submit {
+    margin-top: 20px;
+}
+
+#rodape {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: #808080;
+}
+
+#rodape div {
+    padding: 10px;
+}
+
+#rodape h4 {
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+#rodape p {
+    margin-bottom: 0;
+}
