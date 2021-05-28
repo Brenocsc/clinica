@@ -1,3 +1,11 @@
+<?php
+    require_once "../autenticacao.php";
+    require_once "../conexaoMysql.php";
+    
+    session_start();
+    $pdo = mysqlConnect();
+    checkUsuarioLogadoOrDie($pdo);
+?>
 <!DOCTYPE html>
 <html lang='pt-BR'>
 
@@ -23,20 +31,7 @@
         </nav>
         <main>
             <div id="info">
-                <h1>Você esta na página restrita!</h1>
-                <section>
-                    <h2>Quem somos:</h2>
-                    <p>Somos uma clinica que se utiliza de novas tecnologias para realizar recuperação de atletas de elites.</p>
-                </section>
-                <section>
-                    <h2>Nossos valores:</h2>
-                    <ul>
-                        <li>Carpem Diem</li>
-                        <li>Micro recuperação</li>
-                        <li>Confiança</li>
-                        <li>Auto desenvolvimento</li>
-                    </ul>
-                </section>
+                <h1>Você esta na página restrita</h1>
             </div>
         </main>
         <footer id="rodape">

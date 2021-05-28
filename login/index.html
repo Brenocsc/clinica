@@ -28,23 +28,17 @@
             <a href="../consulta/">Agendamento Consulta</a>
         </nav>
         <main id="principal">
-            <form id="loginForm" autocomplete="on" onsubmit="handleLoginForm()">
+            <form name="loginForm" autocomplete="on" onsubmit="handleLoginForm(event)">
                 <section>
                     <label for="email">Usuário: </label>
-                    <input type="text" id="email" class="credenciais" name="email" required autofocus>
+                    <input type="text" id="email" class="credenciais" name="email" required autofocus autocomplete="on">
                 </section>
                 <section>
                     <label for="senha">Senha: </label>
                     <input type="password" id="senha" class="credenciais" name="senha" required>
                 </section>
                 <button id="loginButton">Submit</button>
-                <!-- <input id="btn_logi" type="submit" value="Submit">
-                <script>
-                    document.getElementById('btn_logi').addEventListener("click", goLogin);
-                    function goLogin(e) {
-                        window.location.href="../principal-restrita/"
-                    }
-                </script> -->
+                <span id="spanDetails"></span>
             </form>
         </main>
         <footer id="rodape">
