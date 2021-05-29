@@ -11,6 +11,10 @@ main {
     padding-left: 20px;
 }
 
+#principal {
+    padding-bottom: 50px;
+}
+
 #cabecalho {
     padding-top: 15px;
     padding-bottom: 15px;
