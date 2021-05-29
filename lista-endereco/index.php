@@ -1,12 +1,15 @@
 <?php
 
-require "../conexaoMysql.php";
+require_once "../autenticacao.php";
+require_once "../conexaoMysql.php";
+
+session_start();
 $pdo = mysqlConnect();
+checkUsuarioLogadoOrDie($pdo);
 
 try {
   $sql = <<<SQL
-  SELECT cep, logradouro, cidade, estado
-  FROM endereco
+  SELECT * FROM base_enderecos_ajax_clinica
   SQL;
 
   $stmt = $pdo->query($sql);
@@ -46,7 +49,6 @@ try {
             <h3>Endereços Cadastrados</h3>
             <table class="table table-striped table-hover">
             <tr>
-                <th></th>
                 <th>CEP</th>
                 <th>Logradouro</th>
                 <th>Cidade</th>
@@ -55,9 +57,6 @@ try {
 
             <?php
             while ($row = $stmt->fetch()) {
-
-                // Limpa os dados produzidos pelo usuário
-                // com possibilidade de ataque XSS
                 $cep = htmlspecialchars($row['cep']);
                 $log = htmlspecialchars($row['logradouro']);
                 $cidade = htmlspecialchars($row['cidade']);
