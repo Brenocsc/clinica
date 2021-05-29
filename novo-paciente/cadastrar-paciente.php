@@ -3,7 +3,7 @@
   $pdo = mysqlConnect();
 
   $nome = $sexo = $email = $telefone = $cep = $logradouro = "";
-  $dataContrato = $salario = $senha = $cidade = $estado = "";
+  $peso = $altura = $cidade = $estado = $tipoSanguineo = "";
 
   try {
     $pdo->beginTransaction();
@@ -16,28 +16,18 @@
     if (isset($_POST["logradouro"])) $logradouro = $_POST["logradouro"];
     if (isset($_POST["cidade"])) $cidade = $_POST["cidade"];
     if (isset($_POST["estado"])) $estado = $_POST["estado"];
-    if (isset($_POST["dataContrato"])) $dataContrato = $_POST["dataContrato"];
-    if (isset($_POST["salario"])) $salario = $_POST["salario"];
-    if (isset($_POST["senha"])) $senha = $_POST["senha"];
-    if (isset($_POST["especialidade"])) $especialidade = $_POST["especialidade"];
-    if (isset($_POST["crm"])) $crm = $_POST["crm"];
-
+    if (isset($_POST["peso"])) $peso = $_POST["peso"];
+    if (isset($_POST["altura"])) $altura = $_POST["altura"];
+    if (isset($_POST["tipoSanguineo"])) $tipoSanguineo = $_POST["tipoSanguineo"];
 
     $stmt = $pdo->prepare('INSERT INTO pessoa_clinica (nome, sexo, email, telefone, cep, logradouro, cidade, estado) VALUES (?, ?, ?, ?, ?, ?, ?, ?)');
     if (! $stmt->execute([$nome, $sexo, $email, $telefone, $cep, $logradouro, $cidade, $estado]))
       throw new Exception('Falha na operação 1');
 
-    $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
     $ultimoIdInserido = $pdo->lastInsertId();
-    $stmt = $pdo->prepare('INSERT INTO funcionario_clinica (codigo, dataContrato, salario, senhaHash) VALUES (?, ?, ?, ?)');
-    if (! $stmt->execute([$ultimoIdInserido, $dataContrato, $salario, $senhaHash]))
+    $stmt = $pdo->prepare('INSERT INTO paciente_clinica (codigo, peso, altura, tipoSanguineo) VALUES (?, ?, ?, ?)');
+    if (! $stmt->execute([$ultimoIdInserido, $peso, $altura, $tipoSanguineo]))
       throw new Exception('Falha na operação 2');
-
-    if (isset($especialidade) and isset($crm)) {
-      $stmt = $pdo->prepare('INSERT INTO medico_clinica (codigo, especialidade, crm) VALUES (?, ?, ?)');
-      if (! $stmt->execute([$ultimoIdInserido, $especialidade, $crm]))
-        throw new Exception('Falha na operação 3');
-    }
 
     $pdo->commit();
 

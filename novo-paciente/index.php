@@ -1,3 +1,11 @@
+<?php
+    require_once "../autenticacao.php";
+    require_once "../conexaoMysql.php";
+    
+    session_start();
+    $pdo = mysqlConnect();
+    checkUsuarioLogadoOrDie($pdo);
+?>
 <!DOCTYPE html>
 <html lang='pt-BR'>
 
@@ -5,6 +13,7 @@
         <meta charset="UTF-8">
         <link rel="stylesheet" href="main.css">
         <title>HxH - Novo Paciente</title>
+        <script src="script.js"></script>
     </head>
 
     <body>
@@ -22,37 +31,36 @@
             <a href="../lista-agendamento-medico/">Lista Agendamento Medicos</a>
         </nav>
         <main>
-            <form>
+            <form action="cadastrar-paciente.php" method="post">
                 <h2>Dados Básicos:</h2>
                 <div>
                     <label for="nome">Nome completo: </label>
-                    <input type="text" id="nome" name="nome" placeholder="nome..." size="50">
+                    <input type="text" name="nome" placeholder="nome..." size="50">
                 </div>
                 <div>
                     <label>Sexo: </label>
-                    <select>
-                        <option value="Masc">Masculino</option>
-                        <option value="Fem">Feminino</option>
-                        <option velua="None">Prefiro não declarar</option>
+                    <select name="sexo">
+                        <option value="masculino">Masculino</option>
+                        <option value="feminino">Feminino</option>
                     </select>
                 </div>
                 <div>
                     <label for="email">Email: </label>
-                    <input type="email" id="email" name="email" placeholder="email..." size="50">
+                    <input type="email" name="email" placeholder="email..." size="50">
                 </div>
                 <div>
-                    <label for="tele">Telefone: </label>
-                    <input type="tel" id="tele" name="tele" placeholder="telefone..." size="50">
+                    <label for="telefone">Telefone: </label>
+                    <input type="tel" name="telefone" placeholder="telefone..." size="50">
                 </div>
 
                 <h2>Endereço:</h2>
                 <div>
                     <label for="cep">CEP: </label>
-                    <input type="text" id="cep" name="cep" required>
+                    <input type="text" name="cep" onkeyup="searchEndereco(event)" size="9" required>
                 </div>
                 <div>
-                    <label for="logadouro">Logadouro: </label>
-                    <input type="text" id="logadouro" name="logadouro" required>
+                    <label for="logradouro">Logradouro: </label>
+                    <input type="text" id="logradouro" name="logradouro" required>
                 </div>
                 <div>
                     <label for="cidade">Cidade: </label>
@@ -65,16 +73,25 @@
 
                 <h2>Informações Pessoais:</h2>
                 <div>
-                    <label for="peso">Peso: </label>
-                    <input type="number" id="peso" name="peso" min="0" required>
+                    <label for="peso">Peso (Kg): </label>
+                    <input type="number" name="peso" min="0" required>
                 </div>
                 <div>
-                    <label for="altura">Altura (em cm): </label>
-                    <input type="number" id="altura" name="altura" min="0" required>
+                    <label for="altura">Altura (cm): </label>
+                    <input type="number" name="altura" min="0" required>
                 </div>
                 <div>
-                    <label for="tipo_sang">Tipo Sanguíneo: </label>
-                    <input type="text" id="tipo_sang" name="tipo_sang" min="0" required>
+                    <label for="tipoSanguineo">Tipo Sanguíneo: </label>
+                    <select name="tipoSanguineo">
+                        <option value="a+">A+</option>
+                        <option value="a-">A-</option>
+                        <option value="b+">B+</option>
+                        <option value="b-">B-</option>
+                        <option value="ab+">AB+</option>
+                        <option value="ab-">AB-</option>
+                        <option value="o+">O+</option>
+                        <option value="o-">O-</option>
+                    </select>
                 </div>
                 
                 <input id="div_submit" type="submit" value="Submit">
