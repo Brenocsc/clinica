@@ -5,8 +5,7 @@ $pdo = mysqlConnect();
 
 try {
   $sql = <<<SQL
-  SELECT p.nome as nome, p.sexo as sexo, p.email as email, p.telefone as telefone, p.cep as cep, p.logradouro as logradouro, p.cidade as cidade, p.estado as estado, f.data_contrato as data_contrato, f.salario as salario
-  FROM pessoa p inner join funcionario f on p.codigo = f.codigo
+  SELECT * FROM pessoa_clinica p inner join funcionario_clinica f on p.codigo = f.codigo
   SQL;
 
   $stmt = $pdo->query($sql);
@@ -46,7 +45,6 @@ try {
             <h3>Funcionários Cadastrados</h3>
             <table class="table table-striped table-hover">
             <tr>
-                <th></th>
                 <th>Nome</th>
                 <th>Sexo</th>
                 <th>Email</th>
@@ -74,7 +72,7 @@ try {
                 $estado = htmlspecialchars($row['estado']);
                 $salario = htmlspecialchars($row['salario']);
 
-                $data = new DateTime($row['data_contrato']);
+                $data = new DateTime($row['dataContrato']);
                 $dataFormatoDiaMesAno = $data->format('d-m-Y');
 
                 echo <<<HTML
