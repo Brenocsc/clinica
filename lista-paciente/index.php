@@ -1,13 +1,16 @@
 <?php
 
-require "../conexaoMysql.php";
+require_once "../autenticacao.php";
+require_once "../conexaoMysql.php";
+
+session_start();
 $pdo = mysqlConnect();
+checkUsuarioLogadoOrDie($pdo);
 
 try {
 
   $sql = <<<SQL
-  SELECT p.nome as nome, p.sexo as sexo, p.email as email, p.telefone as telefone, p.cep as cep, p.logradouro as logradouro, p.cidade as cidade, p.estado as estado, pa.peso as peso, pa.altura as altura, pa.tipo_sang as tipo_sang
-  FROM pessoa p inner join paciente pa on p.codigo = pa.codigo
+  SELECT * FROM pessoa_clinica p inner join paciente_clinica pa on p.codigo = pa.codigo
   SQL;
 
   $stmt = $pdo->query($sql);
@@ -47,7 +50,6 @@ try {
             <h3>Pacientes Cadastrados</h3>
             <table class="table table-striped table-hover">
             <tr>
-                <th></th>
                 <th>Nome</th>
                 <th>Sexo</th>
                 <th>Email</th>
@@ -56,16 +58,13 @@ try {
                 <th>Logradouro</th>
                 <th>Cidade</th>
                 <th>Estado</th>
-                <th>Peso</th>
-                <th>Altura</th>
+                <th>Peso (Kg)</th>
+                <th>Altura (cm)</th>
                 <th>Tipo Sanguíneo</th>
             </tr>
 
             <?php
             while ($row = $stmt->fetch()) {
-
-                // Limpa os dados produzidos pelo usuário
-                // com possibilidade de ataque XSS
                 $nome = htmlspecialchars($row['nome']);
                 $sexo = htmlspecialchars($row['sexo']);
                 $email = htmlspecialchars($row['email']);
@@ -76,7 +75,7 @@ try {
                 $estado = htmlspecialchars($row['estado']);
                 $peso = htmlspecialchars($row['peso']);
                 $altura = htmlspecialchars($row['altura']);
-                $tipo_sang = htmlspecialchars($row['tipo_sang']);
+                $tipo_sang = htmlspecialchars($row['tipoSanguineo']);
 
                 echo <<<HTML
                 <tr>

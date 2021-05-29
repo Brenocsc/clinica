@@ -83,14 +83,14 @@
                 <div>
                     <label for="tipoSanguineo">Tipo Sanguíneo: </label>
                     <select name="tipoSanguineo">
-                        <option value="a+">A+</option>
-                        <option value="a-">A-</option>
-                        <option value="b+">B+</option>
-                        <option value="b-">B-</option>
-                        <option value="ab+">AB+</option>
-                        <option value="ab-">AB-</option>
-                        <option value="o+">O+</option>
-                        <option value="o-">O-</option>
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
                     </select>
                 </div>
                 

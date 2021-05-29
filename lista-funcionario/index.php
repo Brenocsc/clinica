@@ -1,16 +1,19 @@
 <?php
+require_once "../autenticacao.php";
+require_once "../conexaoMysql.php";
 
-require "../conexaoMysql.php";
+session_start();
 $pdo = mysqlConnect();
+checkUsuarioLogadoOrDie($pdo);
 
 try {
-  $sql = <<<SQL
-  SELECT * FROM pessoa_clinica p inner join funcionario_clinica f on p.codigo = f.codigo
-  SQL;
+$sql = <<<SQL
+SELECT * FROM pessoa_clinica p inner join funcionario_clinica f on p.codigo = f.codigo
+SQL;
 
-  $stmt = $pdo->query($sql);
+$stmt = $pdo->query($sql);
 } catch (Exception $e) {
-  exit('Ocorreu uma falha: ' . $e->getMessage());
+exit('Ocorreu uma falha: ' . $e->getMessage());
 }
 ?>
 <!doctype html>
