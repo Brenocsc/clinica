@@ -1,3 +1,11 @@
+<?php
+    require_once "../autenticacao.php";
+    require_once "../conexaoMysql.php";
+    
+    session_start();
+    $pdo = mysqlConnect();
+    checkUsuarioLogadoOrDie($pdo);
+?>
 <!DOCTYPE html>
 <html lang='pt-BR'>
 
@@ -5,6 +13,7 @@
         <meta charset="UTF-8">
         <link rel="stylesheet" href="main.css">
         <title>HxH - Novo Funcionario</title>
+        <script src="script.js"></script>
     </head>
 
     <body>
@@ -23,57 +32,44 @@
         </nav>
         <main>
             <div>
-                <button id="btn_medico" type="button">
+                <button id="btn_medico" type="button" onclick="showMedico()">
                     SOU MEDICO
                 </button>
-                <button id="btn_nao_medico" type="button">
+                <button id="btn_nao_medico" type="button" onclick="hideMedico()">
                     NÃO SOU MÉDICO
                 </button>
             </div>
-            <script>
-                document.getElementById('btn_medico').addEventListener("click", show_med);
-                document.getElementById('btn_nao_medico').addEventListener("click", no_med);
-                function show_med(e) {
-                    var check = document.getElementById('medico_div');
-                    check.style.display = "block";
-                }
-                function no_med(e) {
-                    var check = document.getElementById('medico_div');
-                    check.style.display = "none";
-                }
-            </script>
 
-            <form>
+            <form name="formCadastro" action="cadastrar-funcionario.php" method="post">
                 <h2>Dados Básicos:</h2>
                 <div>
                     <label for="nome">Nome completo: </label>
-                    <input type="text" id="nome" name="nome" placeholder="nome..." size="50">
+                    <input type="text" name="nome" placeholder="nome..." size="50">
                 </div>
                 <div>
                     <label>Sexo: </label>
-                    <select>
-                        <option value="Masc">Masculino</option>
-                        <option value="Fem">Feminino</option>
-                        <option velua="None">Prefiro não declarar</option>
+                    <select name="sexo">
+                        <option value="masculino">Masculino</option>
+                        <option value="feminino">Feminino</option>
                     </select>
                 </div>
                 <div>
                     <label for="email">Email: </label>
-                    <input type="email" id="email" name="email" placeholder="email..." size="50">
+                    <input type="email" name="email" placeholder="email..." size="50">
                 </div>
                 <div>
-                    <label for="tele">Telefone: </label>
-                    <input type="tel" id="tele" name="tele" placeholder="telefone..." size="50">
+                    <label for="telefone">Telefone: </label>
+                    <input type="tel" name="telefone" placeholder="telefone..." size="50">
                 </div>
 
                 <h2>Endereço:</h2>
                 <div>
                     <label for="cep">CEP: </label>
-                    <input type="text" id="cep" name="cep" required>
+                    <input type="text" name="cep" onkeyup="searchEndereco(event)" size="9" required>
                 </div>
                 <div>
-                    <label for="logadouro">Logadouro: </label>
-                    <input type="text" id="logadouro" name="logadouro" required>
+                    <label for="logradouro">Logradouro: </label>
+                    <input type="text" id="logradouro" name="logradouro" required>
                 </div>
                 <div>
                     <label for="cidade">Cidade: </label>
@@ -86,29 +82,19 @@
 
                 <h2>Informações do Contrato:</h2>
                 <div>
-                    <label for="date_inicio">Início do Contrato: </label>
-                    <input type="date" id="date_inicio" name="date_inicio">
+                    <label for="dataContrato">Início do Contrato: </label>
+                    <input type="date" name="dataContrato">
                 </div>
                 <div>
                     <label for="salario">Salário: </label>
-                    <input type="number" id="salario" name="salario" min="0" required>
+                    <input type="number" name="salario"  min="1" step="any" required>
                 </div>
                 <div>
                     <label for="senha">Senha: </label>
-                    <input type="password" id="senha" name="senha" min="0" required>
+                    <input type="password" name="senha" min="0" required>
                 </div>
 
-                <div id="medico_div" style="display: none;">
-                    <h2>Informações do Médico:</h2>
-                    <div>
-                        <label for="especialidade">Especialidade: </label>
-                        <input type="text" id="especialidade" name="especialidade" min="0" required>
-                    </div>
-                    <div>
-                        <label for="crm">CRM: </label>
-                        <input type="text" id="crm" name="crm" min="0" required>
-                    </div>
-                </div>
+                <div id="divMedico"></div>
                 
                 <input id="div_submit" type="submit" value="Submit">
                 

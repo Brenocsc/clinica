@@ -17,8 +17,7 @@
   $stmt->execute([$email]);
 
   if ($row = $stmt->fetch()) {
-  //   // if (password_verify($senha, $row['senhaHash'])) {
-    if ($senha == $row['senhaHash']) {
+    if (password_verify($senha, $row['senhaHash'])) {
       $response['success'] = true;
       $response['detail'] = '../principal-restrita/';
 

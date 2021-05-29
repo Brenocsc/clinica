@@ -27,8 +27,3 @@ async function handleLoginForm (e) {
     console.log(error)
   }
 }
-
-function test() {
-  const span = document.getElementById('spanDetails')
-  span.textContent = 'details'
-}
