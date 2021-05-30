@@ -11,7 +11,6 @@ async function handleLoginForm (e) {
   try {
     const responseJson = await fetch('process-login.php', options)
     const response = await responseJson.json()
-    console.log(response)
 
     const { success, detail } = response
 

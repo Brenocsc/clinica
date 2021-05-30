@@ -1,5 +1,4 @@
 async function searchEndereco (event) {
-  console.log(event.target.value)
   const cep = event.target.value
 
   try {
