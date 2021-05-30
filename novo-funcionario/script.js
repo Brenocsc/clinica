@@ -1,5 +1,4 @@
 async function searchEndereco (event) {
-  console.log(event.target.value)
   const cep = event.target.value
 
   try {
@@ -28,12 +27,12 @@ function showMedico() {
   <div>
     <label for="especialidade">Especialidade: </label>
     <select name="especialidade">
-      <option value="clinico-geral">Clinico Geral</option>
-      <option value="endocrinologista">Endocrinologista</option>
-      <option value="infectologista">Infectologista</option>
-      <option value="neurologista">Neurologista</option>
-      <option value="psiquiatra">Psiquiatra</option>
-      <option value="dermatologista">Dermatologista</option>
+      <option value="Clinico Geral">Clinico Geral</option>
+      <option value="Endocrinologista">Endocrinologista</option>
+      <option value="Infectologista">Infectologista</option>
+      <option value="Neurologista">Neurologista</option>
+      <option value="Psiquiatra">Psiquiatra</option>
+      <option value="Dermatologista">Dermatologista</option>
     </select>
   </div>
   <div>

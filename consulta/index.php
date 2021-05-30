@@ -1,3 +1,18 @@
+<?php
+require_once "../conexaoMysql.php";
+
+$pdo = mysqlConnect();
+
+try {
+$sql = <<<SQL
+SELECT DISTINCT especialidade FROM medico_clinica mc
+SQL;
+
+$stmt = $pdo->query($sql);
+} catch (Exception $e) {
+exit('Ocorreu uma falha: ' . $e->getMessage());
+}
+?>
 <!DOCTYPE html>
 <html lang='pt-BR'>
 
@@ -5,6 +20,7 @@
         <meta charset="UTF-8">
         <link rel="stylesheet" href="main.css">
         <title>HxH - Novo Agendamento</title>
+        <script src="script.js"></script>
     </head>
 
     <body>
@@ -27,46 +43,51 @@
             <a href="../consulta/">Agendamento Consulta</a>
         </nav>
         <main>
-            <form id="principal">
+            <form id="principal" action="cadastra-agenda.php" method="post">
                 <h2>Dados Pessoais:</h2>
                 <div>
                     <label for="nome">Nome completo: </label>
-                    <input type="text" id="nome" name="nome" placeholder="nome..." size="50">
+                    <input type="text" name="nome" placeholder="nome..." size="50" required>
                 </div>
                 <div>
-                    <label for="email">Email completo: </label>
-                    <input type="email" id="email" name="email" placeholder="email..." size="50">
+                    <label for="email">Email: </label>
+                    <input type="email" name="email" placeholder="email..." size="50" required>
                 </div>
                 <div>
                     <label>Sexo: </label>
-                    <select>
-                        <option value="Masc">Masculino</option>
-                        <option value="Fem">Feminino</option>
-                        <option velua="None">Prefiro não declarar</option>
+                    <select name="sexo">
+                        <option value="masculino">Masculino</option>
+                        <option value="feminino">Feminino</option>
                     </select>
                 </div>
                 
                 <h2>Dados da consulta</h2>
                 <div>
                     <label>Especialidade Médica: </label>
-                    <select>
-                        <option value="praca">Praça</option>
+                    <select name="especialidade" onchange="showMedico(event)" required>
+                        <option disabled selected value> -- selecione uma opção -- </option>
+                        <?php
+                        while ($row = $stmt->fetch()) {
+                            $especialidade = $row['especialidade'];
+                            echo <<<HTML
+                                <option value=$especialidade>$especialidade</option>
+                            HTML;
+                        }
+                        ?>
                     </select>
                 </div>
                 <div>
-                    <label>Nome do Médico: </label>
-                    <select>
-                        <option value="praca">Praça</option>
+                    <label for="codigoMedico">Nome do Médico: </label>
+                    <select id="selectMedico" name="codigoMedico" onchange="showHorario()" required disabled>
                     </select>
                 </div>
                 <div>
-                    <label for="date">Data: </label>
-                    <input type="date" id="date" name="date">
+                    <label for="data">Data: </label>
+                    <input id="inputData" type="date" name="data" onchange="showHorario()" required>
                 </div>
                 <div>
-                    <label>Hora da consulta: </label>
-                    <select>
-                        <option value="praca">Praça</option>
+                    <label for="horario">Hora da consulta: </label>
+                    <select id="selectHorario" name="horario" required disabled>
                     </select>
                 </div>
                 <input id="submit" type="submit" value="Submit">

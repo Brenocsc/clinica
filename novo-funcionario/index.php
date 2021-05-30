@@ -44,7 +44,7 @@
                 <h2>Dados Básicos:</h2>
                 <div>
                     <label for="nome">Nome completo: </label>
-                    <input type="text" name="nome" placeholder="nome..." size="50">
+                    <input type="text" name="nome" placeholder="nome..." size="50" required>
                 </div>
                 <div>
                     <label>Sexo: </label>
@@ -55,11 +55,11 @@
                 </div>
                 <div>
                     <label for="email">Email: </label>
-                    <input type="email" name="email" placeholder="email..." size="50">
+                    <input type="email" name="email" placeholder="email..." size="50" required>
                 </div>
                 <div>
                     <label for="telefone">Telefone: </label>
-                    <input type="tel" name="telefone" placeholder="telefone..." size="50">
+                    <input type="tel" name="telefone" placeholder="telefone..." size="50" required>
                 </div>
 
                 <h2>Endereço:</h2>
@@ -83,7 +83,7 @@
                 <h2>Informações do Contrato:</h2>
                 <div>
                     <label for="dataContrato">Início do Contrato: </label>
-                    <input type="date" name="dataContrato">
+                    <input type="date" name="dataContrato" required>
                 </div>
                 <div>
                     <label for="salario">Salário: </label>
