@@ -42,8 +42,14 @@ try {
         <a href="../lista-funcionario/">Lista Funcionario</a> |
         <a href="../lista-paciente/">Lista Paciente</a> |
         <a href="../lista-endereco/">Lista Endereço</a> |
-        <a href="../lista-agendamento/">Lista Todos Agendamentos</a> |
-        <a href="../lista-agendamento-medico/">Lista Meus Agendamento</a>
+        <a href="../lista-agendamento/">Lista Todos Agendamentos</a>
+        <?php
+            if (isset($_SESSION['crm'])) {
+                echo <<<HTML
+                | <a href="../lista-agendamento-medico/">Lista Meus Agendamento</a>
+                HTML;
+            }
+        ?>
     </nav>
     <main>
         <div class="container">

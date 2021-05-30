@@ -8,8 +8,10 @@
   $senha = $_POST['senha'] ?? '';
 
   $sql = <<<SQL
-  SELECT f.codigo, senhaHash
-  FROM pessoa_clinica p INNER JOIN funcionario_clinica f ON p.codigo = f.codigo
+  SELECT f.codigo, senhaHash, m.crm
+  FROM pessoa_clinica p
+  INNER JOIN funcionario_clinica f ON p.codigo = f.codigo
+  LEFT JOIN medico_clinica m ON f.codigo = m.codigo
   WHERE email = ?
   SQL;
 
@@ -24,6 +26,8 @@
       $_SESSION['codigo'] = $row['codigo'];
       $_SESSION['email'] = $email;
       $_SESSION['loginString'] = hash('sha512', $row['senhaHash'] . $_SERVER['HTTP_USER_AGENT']);
+      if (isset($row['crm'])) $_SESSION['crm'] = $row['crm'];
+      else $_SESSION['crm'] = null;
     } else {
       $response['success'] = false;
       $response['detail'] = 'Senha incorreta';

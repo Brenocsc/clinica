@@ -70,7 +70,7 @@ exit('Ocorreu uma falha: ' . $e->getMessage());
                         while ($row = $stmt->fetch()) {
                             $especialidade = $row['especialidade'];
                             echo <<<HTML
-                                <option value=$especialidade>$especialidade</option>
+                                <option value="{$especialidade}">$especialidade</option>
                             HTML;
                         }
                         ?>
