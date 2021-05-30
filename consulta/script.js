@@ -1,6 +1,5 @@
 async function showMedico (event) {
   const especialidade = event.target.value
-  console.log(especialidade)
 
   const response = await fetch('busca-medico.php?especialidade=' + especialidade)
   const medicos = await response.json()
