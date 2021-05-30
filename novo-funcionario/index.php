@@ -27,8 +27,8 @@
             <a href="../lista-funcionario/">Lista Funcionario</a> |
             <a href="../lista-paciente/">Lista Paciente</a> |
             <a href="../lista-endereco/">Lista Endereço</a> |
-            <a href="../lista-agendamento/">Lista Agendamentos</a> |
-            <a href="../lista-agendamento-medico/">Lista Agendamento Medicos</a>
+            <a href="../lista-agendamento/">Lista Todos Agendamentos</a> |
+            <a href="../lista-agendamento-medico/">Lista Meus Agendamento</a>
         </nav>
         <main>
             <div>
