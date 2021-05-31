@@ -30,6 +30,10 @@ main {
     margin: 0;
 }
 
+td {
+    padding: 20px;
+}
+
 #rodape {
     position: absolute;
     bottom: 0;

@@ -12,6 +12,10 @@ main {
     padding-top: 15px;
 }
 
+td {
+    padding: 20px;
+}
+
 #cabecalho {
     padding-top: 15px;
     padding-bottom: 15px;

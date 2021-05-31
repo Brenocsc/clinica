@@ -6,6 +6,10 @@ body {
     min-height: 100vh;
 }
 
+td {
+    padding: 20px;
+}
+
 main {
     padding-bottom: 8em;
     padding-left: 25px;
