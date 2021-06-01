@@ -16,6 +16,12 @@ td {
     padding: 20px;
 }
 
+a {
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+}
+
 #cabecalho {
     padding-top: 15px;
     padding-bottom: 15px;

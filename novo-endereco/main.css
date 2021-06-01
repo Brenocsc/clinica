@@ -33,6 +33,12 @@ li {
     padding: 5px
 }
 
+a {
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+}
+
 #submit {
     margin-top: 10px;
 }
@@ -59,11 +65,8 @@ li {
 
 #btn_login {
     background-color: #dcdcdc;
-    width: 100px;
-    height: 100px;
+    width: 60px;
+    height: 50px;
     border: 1.5px double black;
     border-radius: 10px;
-    position: relative;
-    bottom: 20px;
-    left: 340px;
 }
