@@ -4,6 +4,7 @@ body {
     padding: 0;
     position: relative;
     min-height: 100vh;
+    font-size: 0.9em;
 }
 
 main {
@@ -11,12 +12,17 @@ main {
     padding-left: 20px;
 }
 
+h2 {
+    margin-top: 10px;
+    font-size: 1.5em;
+}
+
 #principal {
     padding-bottom: 50px;
 }
 
 a {
-    padding: 10px;
+    padding: 0 10px;
     text-decoration: none;
     color: black;
 }
@@ -33,10 +39,8 @@ a {
 #navegacao {
     background-color: #696969;
     text-align: center;
-    padding-top: 20px;
+    padding: 13px;
     font-size: 13pt;
-    height: 40px;
-    margin: 0;
 }
 
 #principal div {
@@ -69,9 +73,11 @@ a {
 }
 
 #btn_login {
+    cursor: pointer;
     background-color: #dcdcdc;
+    font-size: 0.3em;
     width: 60px;
-    height: 50px;
+    height: 40px;
     border: 1.5px double black;
     border-radius: 10px;
 }

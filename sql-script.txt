@@ -1,5 +1,5 @@
 CREATE TABLE base_enderecos_ajax_clinica (
-   cep varchar(9),
+   cep varchar(9) UNIQUE,
    logradouro varchar(50),
    cidade varchar(30),
    estado varchar(30)
@@ -18,9 +18,35 @@ CREATE TABLE pessoa_clinica (
 ) ENGINE=InnoDB;
 
 CREATE TABLE funcionario_clinica (
-    codigo int PRIMARY KEY,
-    dataContrato date,
-    salario decimal(15,2),
-    senhaHash varchar(80),
-    FOREIGN KEY (codigo) REFERENCES pessoa_clinica(codigo) ON DELETE CASCADE
-) ENGINE=InnoDB
+   codigo int PRIMARY KEY,
+   dataContrato date,
+   salario decimal(15,2),
+   senhaHash varchar(80),
+   FOREIGN KEY (codigo) REFERENCES pessoa_clinica(codigo) ON DELETE CASCADE
+) ENGINE=InnoDB;
+
+CREATE TABLE paciente_clinica (
+   codigo int PRIMARY KEY,
+   peso int,
+   altura int,
+   tipoSanguineo varchar(3),
+   FOREIGN KEY (codigo) REFERENCES pessoa_clinica(codigo) ON DELETE CASCADE
+) ENGINE=InnoDB;
+
+CREATE TABLE medico_clinica (
+   codigo int PRIMARY KEY,
+   crm varchar(50) UNIQUE,
+   especialidade varchar(50),
+   FOREIGN KEY (codigo) REFERENCES funcionario_clinica(codigo) ON DELETE CASCADE
+) ENGINE=InnoDB;
+
+CREATE TABLE agenda_clinica (
+   codigo int PRIMARY KEY auto_increment,
+   data date,
+   horario int,
+   nome varchar(50),
+   sexo varchar(15),
+   email varchar(50),
+   codigoMedico int,
+   FOREIGN KEY (codigoMedico) REFERENCES medico_clinica(codigo) ON DELETE CASCADE
+) ENGINE=InnoDB;
