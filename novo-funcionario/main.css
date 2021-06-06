@@ -4,16 +4,22 @@ body {
     padding: 0;
     position: relative;
     min-height: 100vh;
+    font-size: 0.9em;
 }
 
 main {
-    padding-bottom: 8em;
+    padding-bottom: 10em;
     padding-left: 25px;
     padding-top: 15px;
 }
 
+h2 {
+    margin-top: 10px;
+    font-size: 1.5em;
+}
+
 a {
-    padding: 10px;
+    padding: 0 10px;
     text-decoration: none;
     color: black;
 }
@@ -30,10 +36,12 @@ a {
 #navegacao {
     background-color: #696969;
     text-align: center;
-    padding-top: 20px;
-    font-size: 13pt;
-    height: 40px;
-    margin: 0;
+    padding: 13px;
+    font-size: 13pt
+}
+
+form div {
+    padding: 3px 0;
 }
 
 #div_submit {

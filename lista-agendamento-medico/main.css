@@ -4,6 +4,7 @@ body {
     padding: 0;
     position: relative;
     min-height: 100vh;
+    font-size: 0.9em;
 }
 
 main {
@@ -17,7 +18,7 @@ td {
 }
 
 a {
-    padding: 10px;
+    padding: 0 10px;
     text-decoration: none;
     color: black;
 }
@@ -34,10 +35,8 @@ a {
 #navegacao {
     background-color: #696969;
     text-align: center;
-    padding-top: 20px;
+    padding: 13px;
     font-size: 13pt;
-    height: 40px;
-    margin: 0;
 }
 
 #rodape {
